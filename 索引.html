@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转正方体</title>
+	<style>
+		.box {
+		     width:400px;
+			 height:400px;
+			 background-color:pink;  /*背景颜色*/
+			 margin:100px auto;  /*盒子的外边距*/
+			 position:relative;
+		}
+		.out-div img {
+			width:100%;
+			height:100%;
+		}
+		.wrap {
+			position:absolute;
+			top:0;
+			left:0;
+			bottom:0;
+			right:0;
+			width:200px;
+			height:200px;
+			background-color:green;
+			margin:auto;
+			transform-style:preserve-3d;
+			/*开启3D*/
+			animation:move 10s infinite linear ;
+			/*使用动画move:动画名称 动画时间 动画循环 动画匀速*/
+		}
+		.out-div {
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		}
+		/*制作动画*/
+		@keyframes move {
+			0% {
+			transform:rotateX(0deg)rotateY(0deg)rotateZ(0deg);
+			}
+			50% {
+			transform:rotateX(180deg)rotateY(180deg)rotateZ(180deg);
+			}
+			100% {
+			transform:rotateX(3600deg)rotateY(3600deg)rotateZ(3600deg);
+			}
+		}
+		.front{
+			transform:translateZ(100px);
+		}
+		.back {
+		    transform:translateZ(-100px);
+		}
+		.left {
+			transform:translateX(-100px) rotateY(90deg); 
+		}
+		.right {
+			transform:translateX(100px) rotateY(90deg); 
+		}
+		.top {
+			transform:translateY(-100px) rotateX(90deg);
+		}
+		.bottom {
+			transform:translateY(100px) rotateX(90deg);
+		}
+		/*鼠标划入正方体需要它扩散*/
+		.wrap:hover .front {
+			transform:translateZ(200px);
+		}
+		.wrap:hover .back {
+			transform:translateZ(-200px);
+		}
+		.wrap:hover .left {
+			transform:translateX(-200px) rotateY(90deg); 
+		}
+		.wrap:hover .right{
+			transform:translateX(200px) rotateY(90deg);
+		}
+		.wrap:hover .top {
+			transform:translateY(-200px) rotateX(90deg);
+		}
+		.wrap:hover .bottom {
+			transform:translateY(200px) rotateX(90deg);
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="wrap" >
+			<div class="out-div front front1">
+				<img src="images/1.jpg" >
+			</div>
+			<div class="out-div back back1">
+				<img src="images/2.jpg" >
+			</div>
+			<div class="out-div left left1">
+				<img src="images/3.jpg" >
+			</div>
+			<div class="out-div right right1">
+				<img src="images/4.jpg" >
+			</div>
+			<div class="out-div top top1">
+				<img src="images/5.jpg" >
+			</div>
+			<div class="out-div bottom bottom1">
+				<img src="images/6.jpg" >
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>网页放置视频</title>
+
+  <style type="text/css">
+
+  </style>
+
+  <script type="text/javascript" src="js/ControlBar.js"></script>
+
+</head>
+
+<body>
+
+<audio src="htmls/1.mp3"  controls="controls" loop="loop" preload="auto" >
+
+  你的浏览器不支持video元素
+
+</audio>
+
+<video id="myPlayer" width="600" height="400" src="htmls/2_1.mp4" controls="controls" loop="loop" poster="3.jpg">
+
+  你的浏览器不支持audio元素
+
+  <!-- MP4有3种编码，mpg4(xdiv),,mpg4(xvid)，avc(h264)，
+
+        只有h264才是公认的MP4标准编码 -->
+
+</video>
+
+<div id="progress"></div>
+
+<!-- 音量控制 -->
+
+<input id="volume" type="range" min="0" max="1" step="0.1" onchange="Volume(this)">
+
+<!-- 速率和时间进度的信息 -->
+
+<span id="rate">1</span>fps <span id="info"></span>
+
+<button onclick="Play(this)" id="btn1">播放</button>
+
+<button onclick="Fast()">快进</button>
+
+<button onclick="Slow()">慢进</button>
+
+<button onclick="Prev()">后退</button>
+
+<button onclick="Next()">前进</button>
+
+<button onclick="Muted(this)">静音</button>
+
+</body>
+
+</html>
